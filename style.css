@@ -1,10 +1,45 @@
 body {
     font-family: Arial, sans-serif;
+    background-color: #fff;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.dark-mode {
+    background-color: #222;
+    color: #eee;
+}
+
+.light-mode {
+    background-color: #f5f5f5;
+    color: #333;
 }
 
 #container {
     max-width: 800px;
     margin: 0 auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 767px) {
+    #container {
+        padding: 10px;
+    }
+}
+
+.dark-mode #container {
+    background-color: #333;
+    color: #eee;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.light-mode #container {
+    background-color: #fff;
+    color: #333;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
@@ -23,14 +58,38 @@ th, td {
     padding: 8px;
 }
 
+@media (max-width: 767px) {
+    th, td {
+        padding: 5px;
+    }
+}
+
+.dark-mode th, .dark-mode td {
+    border-color: #555;
+}
+
+.light-mode th, .light-mode td {
+    border-color: #ccc;
+}
+
 #addRecord {
     display: flex;
+    flex-wrap: wrap;
     margin-bottom: 20px;
 }
 
 #addRecord input {
-    flex: 1;
-    margin-right: 10px;
+    flex: 1 0 100%;
+    margin-right: 0;
+    margin-bottom: 10px;
+}
+
+@media (min-width: 768px) {
+    #addRecord input {
+        flex: 1;
+        margin-right: 10px;
+        margin-bottom: 0;
+    }
 }
 
 #addRecord button {
@@ -48,4 +107,95 @@ th, td {
 
 #addRecord button:hover {
     background-color: #45a049;
+}
+
+#pagination {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#pagination button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+#pagination button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.dark-mode #pagination button {
+    background-color: #555;
+    color: #eee;
+}
+
+.dark-mode #pagination button:disabled {
+    background-color: #444;
+    color: #888;
+}
+
+#themeToggle {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#themeToggle button {
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+#keyboardShortcuts {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+}
+
+.dark-mode #keyboardShortcuts {
+    background-color: #333;
+    color: #eee;
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.dark-mode {
+    background-color: #222;
+    color: #eee;
+}
+
+.light-mode {
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+#container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 767px) {
+    #container {
+        padding: 10px;
+    }
 }

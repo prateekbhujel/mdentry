@@ -5,19 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Medical Records</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4CAF50">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="icons/icon-192x192.png">
 </head>
 <body>
-    <div id="keyboardShortcuts">
-        <h2>Keyboard Shortcuts</h2>
-        <p>Use the following keyboard shortcuts for navigation:</p>
-        <ul>
-            <li><strong>Enter:</strong> Move to the next input field or add a record</li>
-            <li><strong>Up Arrow:</strong> Move to the previous input field or record</li>
-        </ul>
+    <div id="themeToggle">
+        <button id="darkModeBtn" title="Dark Mode">🌙</button>
+        <button id="lightModeBtn" title="Light Mode">☀️</button>
+        <button id="defaultModeBtn" title="Default Mode">🔴</button>
     </div>
 
     <div id="container">
         <h1>Medical Records</h1>
+        <div id="pagination">
+            <button id="prevBtn" disabled>Previous</button>
+            <span id="pageInfo"></span>
+            <button id="nextBtn" disabled>Next</button>
+        </div>
         <table id="recordsTable">
             <thead>
                 <tr>
@@ -32,17 +39,47 @@
             </tbody>
         </table>
         <div id="addRecord">
-            <input type="text" id="patientName" placeholder="Patient Name">
+            <input type="text" id="patientName" placeholder="Patient Name" autofocus>
             <input type="text" id="heading" placeholder="Heading">
             <input type="text" id="variable" placeholder="Variable">
             <button id="addBtn">Add Record</button>
         </div>
         <div id="excelContainer"></div>
-        <button id="exportBtn">Export to Excel</button>
+        <button id="exportBtn">Export Current Page to Excel</button>
+        <button id="exportAllBtn">Export All Records to Excel</button>
+    </div>
+
+    <div id="keyboardShortcuts">
+        <button id="showHideShortcuts">Show/Hide Keyboard Shortcuts</button>
+        <div id="shortcutsContainer" style="display: none;">
+            <h2>Keyboard Shortcuts</h2>
+            <p>Use the following keyboard shortcuts for navigation:</p>
+            <ul>
+                <li><strong>Enter:</strong> Move to the next input field or add/save a record</li>
+                <li><strong>Up Arrow:</strong> Move to the previous input field or record</li>
+                <li><strong>Down Arrow:</strong> Move to the next input field or record</li>
+                <li><strong>Tab:</strong> Move to the table or back to the input fields</li>
+                <li><strong>Del/Shift+Del:</strong> Delete the current record</li>
+                <li><strong>E:</strong> Edit the current record</li>
+                <li><strong>CTRL + D:</strong> Toggle dark mode</li>
+                <li><strong>CTRL + L:</strong> Toggle light mode</li>
+            </ul>
+        </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.0/xlsx.full.min.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js')
+                .then(function(registration) {
+                    console.log('Service Worker registered successfully.', registration);
+                })
+                .catch(function(err) {
+                    console.log('Service Worker registration failed.', err);
+                });
+        }
+    </script>
 </body>
 </html>
