@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Records</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="keyboardShortcuts">
+        <h2>Keyboard Shortcuts</h2>
+        <p>Use the following keyboard shortcuts for navigation:</p>
+        <ul>
+            <li><strong>Enter:</strong> Move to the next input field or add a record</li>
+            <li><strong>Up Arrow:</strong> Move to the previous input field or record</li>
+        </ul>
+    </div>
+
+    <div id="container">
+        <h1>Medical Records</h1>
+        <table id="recordsTable">
+            <thead>
+                <tr>
+                    <th>Patient Name</th>
+                    <th>Heading</th>
+                    <th>Variable</th>
+                    <th>Edit/Delete</th>
+                </tr>
+            </thead>
+            <tbody id="recordsBody">
+                <!-- Records will be populated here -->
+            </tbody>
+        </table>
+        <div id="addRecord">
+            <input type="text" id="patientName" placeholder="Patient Name">
+            <input type="text" id="heading" placeholder="Heading">
+            <input type="text" id="variable" placeholder="Variable">
+            <button id="addBtn">Add Record</button>
+        </div>
+        <div id="excelContainer"></div>
+        <button id="exportBtn">Export to Excel</button>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.0/xlsx.full.min.js"></script>
+</body>
+</html>
