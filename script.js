@@ -179,6 +179,30 @@ $(document).ready(function() {
             e.preventDefault();
             toggleTheme('default');
         }
+
+        // Next button shortcut: F2
+        if (e.keyCode === 113) { // F2
+            $('#prevBtn').click();
+            e.preventDefault();
+        }
+
+        // Previous button shortcut: F3
+        if (e.keyCode === 114) { // F3
+            $('#nextBtn').click();
+            e.preventDefault();
+        }
+
+        // Download all records to Excel shortcut: F4
+        if (e.keyCode === 115) { // F4
+            $('#exportAllBtn').click();
+            e.preventDefault();
+        }
+
+        // Download current page records to Excel shortcut: F5
+        if (e.keyCode === 116) { // F5
+            $('#exportBtn').click();
+            e.preventDefault();
+        }
     });
 
     // Function to add record
@@ -229,6 +253,24 @@ $(document).ready(function() {
         if (recordsToExport.length > 0) {
             const wb = XLSX.utils.book_new();
             const ws = XLSX.utils.json_to_sheet(recordsToExport);
+
+            // Apply styling to the header row
+            const headerCellStyle = { font: { bold: true }, alignment: { horizontal: 'center', vertical: 'center' } };
+            const headerRange = XLSX.utils.decode_range(ws['!ref']);
+            for (let col = headerRange.s.c; col <= headerRange.e.c; ++col) {
+                const cellAddress = XLSX.utils.encode_cell({ r: headerRange.s.r, c: col });
+                ws[cellAddress].s = headerCellStyle;
+            }
+
+            // Apply styling to the data rows
+            const dataCellStyle = { alignment: { horizontal: 'left', vertical: 'center' } };
+            for (let row = headerRange.s.r + 1; row <= headerRange.e.r; ++row) {
+                for (let col = headerRange.s.c; col <= headerRange.e.c; ++col) {
+                    const cellAddress = XLSX.utils.encode_cell({ r: row, c: col });
+                    ws[cellAddress].s = dataCellStyle;
+                }
+            }
+
             XLSX.utils.book_append_sheet(wb, ws, "Medical Records");
             const wbout = XLSX.write(wb, { bookType: 'xlsx', bookSST: true, type: 'binary' });
 
@@ -251,6 +293,7 @@ $(document).ready(function() {
             alert("No records to export!");
         }
     }
+
 
     // Clear input fields
     function clearInputFields() {
