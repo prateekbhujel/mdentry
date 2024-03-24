@@ -34,7 +34,10 @@ The Medical Records Management App is a web-based application designed to help u
 - **Tab Key:** Move to the table or back to the input fields.
 - **Del/Shift + Del:** Delete the current record.
 - **E Key:** Edit the current record.
-- **Ctrl + D:** Toggle dark mode.
-- **Ctrl + L:** Toggle light mode.
+- **CTRL + . :** Toggle Between Theme.
+- **F2:** Go to Previous Page.
+- **F3:** Go to Next Page.
+- **F4:** Download All Records in Excel.
+- **F5:** Download Current Records in Excel.
 
 These keyboard shortcuts can help you navigate and interact with the Medical Records Management App more efficiently.
